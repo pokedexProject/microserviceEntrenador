@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package =  "github.com/pokedexProject/microserviceEntrenador/src/proto";
+
+service MasterService {
+  rpc CreateMaster (CreateMasterRequest) returns (CreateMasterResponse);
+  rpc GetMaster (GetMasterRequest) returns (GetMasterResponse);
+  rpc UpdateMaster (UpdateMasterRequest) returns (UpdateMasterResponse);
+  rpc DeleteMaster (DeleteMasterRequest) returns (DeleteMasterResponse);
+  rpc ListMasters (ListMastersRequest) returns (ListMastersResponse);
+  rpc LoginMaster (LoginRequest) returns (LoginResponse);
+  rpc LogoutMaster (LogoutRequest) returns (LogoutResponse);
+}
+
+message CreateMasterRequest {
+  string nombre = 1;
+  string correo = 2;
+  string contrasena = 3;
+  string nivel = 4;
+  string idCompanero = 5;
+}
+
+message CreateMasterResponse {
+  string id = 1;
+  string nombre = 2;
+  string correo = 3;
+  string nivel = 4;
+  string idCompanero = 5;
+}
+
+message GetMasterRequest {
+  string id = 1;
+}
+
+message GetMasterResponse {
+  string id = 1;
+  string nombre = 2;
+  string correo = 3;
+  string nivel = 4;
+  string idCompanero = 5;
+}
+
+message UpdateMasterRequest {
+  string id = 1;
+  string nombre = 2;
+  string correo = 3;
+  string nivel = 4;
+  string idCompanero = 5;
+}
+
+message UpdateMasterResponse {
+  string id = 1;
+  string nombre = 2;
+  string correo = 3;
+  string nivel = 4;
+  string idCompanero = 5;
+}
+
+message DeleteMasterRequest {
+  string id = 1;
+}
+
+message DeleteMasterResponse {
+  string mensaje = 1;
+}
+
+message ListMastersRequest {
+}
+
+message ListMastersResponse {
+  repeated Master masters = 1;
+}
+
+message Master{
+    string id = 1;
+    string nombre = 2;
+    string correo = 3;
+    string nivel = 4;
+    string idCompanero = 5;
+}
+
+
+message LoginRequest{
+  string correo = 1;
+  string contrasena = 2;
+}
+
+message LoginResponse{
+  string token = 1;
+  Master master = 2;
+}
+
+message LogoutRequest{
+  string masterID = 1;
+}
+
+message LogoutResponse{
+  string mensaje = 1;
+}
